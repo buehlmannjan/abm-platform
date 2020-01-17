@@ -1,0 +1,14 @@
+{
+	"name": "abm_platform",
+	"version": "0.1.0",
+	"description": "ABM Platform",
+	"author": "Maximiliano Geier <mgeier@dc.uba.ar>",
+	"main": "server/main.js",
+	"scripts": {
+		"start": "node server/main.js"
+	},
+	"dependencies": {
+		"brew": "0.0.8",
+		"ws": "6.1.3"
+	}
+}
