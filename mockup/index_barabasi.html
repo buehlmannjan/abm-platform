@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    label {
+      text-align: right;
+    }
+    .settings {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        margin: .5rem;
+    }
+  </style>
+
+  <div class="settings">
+    <label for="size">Network Size</label>
+    <input style="width:480px;" name="size" id="size" type="range" min="1" max="100" step="1" value="50">
+    <output name="value" for="size">50</output>
+  </div>
+  <div class="settings">
+    <label for="speed">Diffusion Speed</label>
+    <input style="width:480px;" name="speed" id="speed" type="range" min="0" max="1" step="any" value="0.5">
+    <output name="value" for="speed">0.50</output>
+  </div>
+
+  <canvas width="960" height="600"></canvas>
+
+  <!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
+  <script src="d3.v4.min.js"></script>
+  <script src="barabasi.js"></script>
+</html>

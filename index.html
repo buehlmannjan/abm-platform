@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ABM Platform</title>
+    <style>
+        :root {
+            --urrp_blue: #02019A;
+            --urrp_cyan: #02B0DB;
+            --fontsize_lbar: 17px;
+            --fontweight_lbar: normal;
+            --fontstyle_lbar: normal;
+            --fontcolor_lbar: #585858;
+            --fontfamily_title: 'Roboto';
+            --fontfamily_sidebars: 'Lato';
+        }
+
+        html {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            text-decoration: none;
+            outline: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .abm_platform {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            height: 100%;
+        }
+
+        .sidebar_l {
+            display: grid;
+            grid-template-rows: 4fr 1fr;
+            padding: 30px;
+            background: var(--urrp_cyan);
+            
+            
+        }
+
+        .settings {
+            font-family: var(--fontfamily_sidebars);
+            display: grid;
+            grid-template-columns: 3fr [center] 6fr 1fr [center];
+            grid-gap: 0.5em;
+            text-align: center;
+            justify-content: stretch;
+            justify-items: stretch;
+            margin: 1% 1% 0.5% 0.5%;
+            padding-top: 10px;
+            
+        }
+
+        .setting_text {
+            font-weight: var(--fontweight_lbar);
+            font-size: var(--fontsize_lbar);
+            font-style: var(--fontstyle_lbar);
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin: 0% 0% .5% 0.5%;
+            
+        }
+
+        .setting_value {
+            display: flex;
+            align-items: center;
+            vertical-align: middle;
+            justify-content: left;
+            font-size: 14px;
+        }
+
+        .checkbox_container {
+            font-family: var(--fontfamily_sidebars), bold;
+            font-weight: var(--fontweight_lbar);
+            font-size: var(--fontsize_lbar);
+            font-style: var(--fontstyle_lbar);
+            display: grid;
+            grid-template-columns: 3fr 7fr;
+            grid-gap: 0.5em;
+            text-align: left;
+            justify-content: stretch;
+            justify-items: stretch;
+            margin: 1% 1% 0.5% 0.5%;
+        }
+
+        .selectbox_container {
+            font-family: var(--fontfamily_sidebars);
+            font-weight: var(--fontweight_lbar);
+            font-size: var(--fontsize_lbar);
+            font-style: var(--fontstyle_lbar);
+            display: grid;
+            grid-template-columns: 3fr 7fr;
+            grid-gap: 0.5em;
+            text-align: left;
+            justify-content: stretch;
+            justify-items: stretch;
+            margin: 1% 1% 0.5% 0.5%;
+            
+        }
+
+        .sidebar_r {
+            margin: 0% 0% 0% 0%;
+            border-left: #717171;
+        }
+
+        .status {
+            font-family: var(--fontfamily_sidebars), bold;
+            margin: 2% 2% 1% 1%;
+        }
+
+        div#status_msg {
+            font-family: var(--fontfamily_sidebars), bold;
+            color: red;
+        }
+
+        .model_msg {
+            font-family: 'Roboto', normal;
+            color: 'red';
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: 1fr [center] 1fr [center];
+            grid-gap: 1em;
+            margin: 0% 0% 4% 4%;
+        }
+
+        button {
+            display: inline-block;
+            border: none;
+            padding: 10px 20px;
+            margin: 0;
+            text-decoration: none;
+            background: var(--urrp_blue);
+            color: white;
+            font-family: var(--fontsize_lbar);
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            border-radius: 6px;
+        }
+        button:hover,
+        button:focus {
+            background: #0114CC;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .model_container {
+            flex: 1;
+            display: flex;
+            width: 100%;
+            min-height: 100%;
+            /*border:#333 2px solid;*/
+            padding: 30px;
+        }
+
+        .charts_container {
+            display: flex;
+            flex-direction: column;
+            content: stretch;
+            height: 100% !important;
+            min-height: 100%;
+            font-family: var(--fontfamily_sidebars);
+            border: 10px, black;
+            padding-right: 50px;
+            background-color: gainsboro;
+            margin: 0px;
+        }
+
+        .chart {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            min-height: auto;
+            max-height: 25%;
+            padding-top: 20px;
+            padding-left: 20px;
+            margin: 0px;
+        }
+
+        div#tooltip {
+            position: absolute;
+            display: inline-block;
+            padding: 10px;
+            font-family: var(--fontfamily_sidebars);
+            color: #000;
+            background-color: #fff;
+            border: 1px solid #999;
+            border-radius: 2px;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 1;
+        }
+        
+        title {
+            font-family: var(--fontfamily_sidebars);
+            align: center;
+            display: inline-block;
+            padding: 10px;
+            color: #000;
+           
+        }
+
+        
+           
+        
+        
+     
+
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/input.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Roboto:300,400,500,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <h1 style="font-family: var(--fontfamily_title); font-weight: 500; color: white; background-color: #02019A; padding: 20px; margin: 0; border-bottom: 1px solid #000000;text-align: center;">Agent Based Modelling Platform</h1,></div>
+    <div class="abm_platform">
+        <div class="sidebar_l">
+            <div class="settings_container" style="font-weight: bold; font-family: var(--fontfamily_sidebars);">Control Parameters</div>
+            <div class="status">
+                <div class="buttons">
+                    <button type="button" autofocus="autofocus" class="play_button" disabled></button>
+                    <button type="button" class="reset_button" disabled></button>
+                </div>
+                <b>Client Status</b>
+                <div id="status_msg"></div>
+                <b>Model</b>
+                <div id="model_msg"></div>
+            </div>
+        </div>
+        <div class="model_container"></div>
+        <div class="sidebar_r">
+            <div class="charts_container" style="margin: 0px;"><div style="font-family: var(--fontfamily_sidebars); padding: 30px; font-weight: bold; padding-bottom: 20px;">Charts</div></div>
+        </div>
+    </div>
+
+    <script src="lib/d3.js"></script>
+    <script src="lib/d3fc.js"></script>
+    <script src="client_viz/session_manager.js"></script>
+    <script src="client_viz/model.js"></script>
+    <script src="client_viz/chart.js"></script>
+    <script src="client_viz/graph_model.js"></script>
+    <script src="client_viz/grid_model.js"></script>
+    <script src="client_viz/main.js"></script>
+</body>
+</html>

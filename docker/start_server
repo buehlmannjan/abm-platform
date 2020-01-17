@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pushd ..
+docker run -p 9000:9000 -d mgeier/abm_platform
+popd

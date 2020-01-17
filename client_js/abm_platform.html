@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <title>ABM Platform - Client</title>
+</head>
+<body>
+    <script src="chart.js"></script>
+    <script src="model.js"></script>
+    <script src="grid_model.js"></script>
+    <script src="abmclient.js"></script>
+    <script src="models/forest.js"></script>
+    <script>
+        var model = new ForestFireModel();
+        var c = new ABMCLient(model);
+    </script>
+</body>
+</html>
